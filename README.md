@@ -1,13 +1,21 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/Cybertourist/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Cybertourist/python-project-50/actions)
+# Hexlet Code – Генератор различий
 
-# Hexlet Code – Gendiff
+[![GitHub Actions](https://github.com/Cybertourist/python-project-50/actions/workflows/ci.yml/badge.svg)](https://github.com/Cybertourist/python-project-50/actions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Cybertourist_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Cybertourist_python-project-50)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Cybertourist_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Cybertourist_python-project-50)
 
-![Python CI](https://github.com/Cybertourist/python-project-50/actions/workflows/ci.yml/badge.svg)
+---
 
 ## Описание
-**Gendiff** — это консольная утилита для сравнения двух конфигурационных файлов и вывода различий между ними.
 
-## Установка
+**Gendiff** — утилита, которая сравнивает два JSON-файла и показывает различия.
+
+---
+
+## Установка и запуск
+
 ```bash
 make install
+gendiff file1.json file2.json
+```
+
