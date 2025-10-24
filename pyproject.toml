@@ -26,4 +26,5 @@ target-version = "py311"
 dev = [
     "flake8",
     "pytest",
+    "pytest-cov",
 ]
