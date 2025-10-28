@@ -1,7 +1,7 @@
 from .parser import parse_file
 
 
-def to_str(value):
+def format_value(value):
     if isinstance(value, bool):
         return str(value).lower()
     return value
@@ -16,14 +16,14 @@ def generate_diff(file_path1, file_path2):
 
     for key in keys:
         if key in data1 and key not in data2:
-            diff_lines.append(f"  - {key}: {data1[key]}")
+            diff_lines.append(f"  - {key}: {format_value(data1[key])}")
         elif key not in data1 and key in data2:
-            diff_lines.append(f"  + {key}: {data2[key]}")
+            diff_lines.append(f"  + {key}: {format_value(data2[key])}")
         elif data1[key] == data2[key]:
-            diff_lines.append(f"    {key}: {data1[key]}")
+            diff_lines.append(f"    {key}: {format_value(data1[key])}")
         else:
-            diff_lines.append(f"  - {key}: {data1[key]}")
-            diff_lines.append(f"  + {key}: {data2[key]}")
+            diff_lines.append(f"  - {key}: {format_value(data1[key])}")
+            diff_lines.append(f"  + {key}: {format_value(data2[key])}")
 
     diff_lines.append('}')
     return '\n'.join(diff_lines)
