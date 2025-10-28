@@ -19,3 +19,6 @@ make install
 gendiff file1.json file2.json
 ```
 
+## Демонстрация
+
+[![asciicast](https://asciinema.org/a/9ee86d66-2aa3-4ebd-a983-5c8c32245391.svg)](https://asciinema.org/a/9ee86d66-2aa3-4ebd-a983-5c8c32245391)
