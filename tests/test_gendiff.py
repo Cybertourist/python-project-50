@@ -13,7 +13,8 @@ def test_generate_diff():
 
     diff = generate_diff(file1, file2)
     assert diff.strip() == expected
-    
+
+
 def test_generate_diff_yaml():
     base_path = os.path.join(os.path.dirname(__file__), 'test_data')
     file1 = os.path.join(base_path, 'file1.yaml')

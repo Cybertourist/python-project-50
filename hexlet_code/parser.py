@@ -13,4 +13,3 @@ def parse_file(filepath):
             return json.load(f)
         else:
             raise ValueError(f"Unsupported file format: {ext}")
-

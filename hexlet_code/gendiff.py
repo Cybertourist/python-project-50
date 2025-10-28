@@ -1,10 +1,11 @@
-import json
-from hexlet_code.parser import parse_file
+from .parser import parse_file
+
 
 def to_str(value):
     if isinstance(value, bool):
         return str(value).lower()
     return value
+
 
 def generate_diff(file_path1, file_path2):
     data1 = parse_file(file_path1)
