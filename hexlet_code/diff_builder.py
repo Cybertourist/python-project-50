@@ -1,43 +1,38 @@
 def build_diff(data1, data2):
-    """Строит внутреннее представление различий между двумя структурами."""
+    keys = sorted(set(data1.keys()) | set(data2.keys()))
     diff = []
-    all_keys = sorted(set(data1.keys()) | set(data2.keys()))
 
-    for key in all_keys:
-        value1 = data1.get(key)
-        value2 = data2.get(key)
-
-        # Если ключ есть в обеих структурах и оба значения — словари, то идем вглубь
-        if isinstance(value1, dict) and isinstance(value2, dict):
+    for key in keys:
+        if key not in data2:
             diff.append({
-                'key': key,
-                'type': 'nested',
-                'children': build_diff(value1, value2)
+                "key": key,
+                "status": "removed",
+                "value": data1[key],
             })
         elif key not in data1:
             diff.append({
-                'key': key,
-                'type': 'added',
-                'value': value2
+                "key": key,
+                "status": "added",
+                "value": data2[key],
             })
-        elif key not in data2:
+        elif isinstance(data1[key], dict) and isinstance(data2[key], dict):
             diff.append({
-                'key': key,
-                'type': 'removed',
-                'value': value1
+                "key": key,
+                "status": "nested",
+                "children": build_diff(data1[key], data2[key]),
             })
-        elif value1 != value2:
+        elif data1[key] != data2[key]:
             diff.append({
-                'key': key,
-                'type': 'changed',
-                'old_value': value1,
-                'new_value': value2
+                "key": key,
+                "status": "changed",
+                "old_value": data1[key],
+                "new_value": data2[key],
             })
         else:
             diff.append({
-                'key': key,
-                'type': 'unchanged',
-                'value': value1
+                "key": key,
+                "status": "unchanged",
+                "value": data1[key],
             })
 
     return diff

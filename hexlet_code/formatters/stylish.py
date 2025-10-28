@@ -1,44 +1,50 @@
+INDENT = 4
+
+
 def format_value(value, depth):
-    """Форматирует значение (включая вложенные словари) с правильными отступами."""
+    """Format primitive or nested dict value to stylish representation."""
     if isinstance(value, dict):
-        indent_size = depth * 4
-        current_indent = ' ' * indent_size
         lines = []
+        inner_indent = " " * (depth * INDENT)
         for k, v in value.items():
-            lines.append(f"{current_indent}    {k}: {format_value(v, depth + 1)}")
-        closing_indent = ' ' * indent_size
-        return f"{{\n{'\n'.join(lines)}\n{closing_indent}}}"
-    elif value is True:
-        return 'true'
-    elif value is False:
-        return 'false'
-    elif value is None:
-        return 'null'
+            lines.append(f"{inner_indent}    {k}: {format_value(v, depth + 1)}")
+        closing_indent = " " * (depth * INDENT)
+        return "{\n" + "\n".join(lines) + f"\n{closing_indent}}}"
+    if value is True:
+        return "true"
+    if value is False:
+        return "false"
+    if value is None:
+        return "null"
     return str(value)
 
 
 def format_stylish(diff, depth=0):
-    """Рекурсивно форматирует diff-дерево в виде 'stylish'."""
-    indent_size = depth * 4
-    current_indent = ' ' * indent_size
+    """Format diff tree into stylish string."""
     lines = []
+    current_indent = " " * (depth * INDENT)
 
     for node in diff:
-        key = node['key']
-        node_type = node['type']
+        key = node["key"]
+        status = node["status"]
 
-        if node_type == 'nested':
-            children = format_stylish(node['children'], depth + 1)
-            lines.append(f"{current_indent}    {key}: {children}")
-        elif node_type == 'added':
-            lines.append(f"{current_indent}  + {key}: {format_value(node['value'], depth + 1)}")
-        elif node_type == 'removed':
-            lines.append(f"{current_indent}  - {key}: {format_value(node['value'], depth + 1)}")
-        elif node_type == 'unchanged':
-            lines.append(f"{current_indent}    {key}: {format_value(node['value'], depth + 1)}")
-        elif node_type == 'changed':
-            lines.append(f"{current_indent}  - {key}: {format_value(node['old_value'], depth + 1)}")
-            lines.append(f"{current_indent}  + {key}: {format_value(node['new_value'], depth + 1)}")
+        if status == "nested":
+            children_repr = format_stylish(node["children"], depth + 1)
+            lines.append(f"{current_indent}    {key}: {children_repr}")
+        elif status == "added":
+            val = format_value(node["value"], depth + 1)
+            lines.append(f"{current_indent}  + {key}: {val}")
+        elif status == "removed":
+            val = format_value(node["value"], depth + 1)
+            lines.append(f"{current_indent}  - {key}: {val}")
+        elif status == "unchanged":
+            val = format_value(node["value"], depth + 1)
+            lines.append(f"{current_indent}    {key}: {val}")
+        elif status == "changed":
+            old_v = format_value(node["old_value"], depth + 1)
+            new_v = format_value(node["new_value"], depth + 1)
+            lines.append(f"{current_indent}  - {key}: {old_v}")
+            lines.append(f"{current_indent}  + {key}: {new_v}")
 
-    closing_indent = ' ' * (indent_size)
-    return f"{{\n{'\n'.join(lines)}\n{closing_indent}}}"
+    closing_indent = " " * (depth * INDENT)
+    return "{\n" + "\n".join(lines) + f"\n{closing_indent}}}"
