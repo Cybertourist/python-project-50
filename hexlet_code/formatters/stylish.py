@@ -7,9 +7,11 @@ def format_value(value, depth):
         lines = []
         inner_indent = " " * (depth * INDENT)
         for k, v in value.items():
-            lines.append(f"{inner_indent}    {k}: {format_value(v, depth + 1)}")
+            line = f"{inner_indent}    {k}: {format_value(v, depth + 1)}"
+            lines.append(line)
         closing_indent = " " * (depth * INDENT)
-        return "{\n" + "\n".join(lines) + f"\n{closing_indent}}}"
+        body = "\n".join(lines)
+        return "{\n" + body + f"\n{closing_indent}}}"
     if value is True:
         return "true"
     if value is False:
