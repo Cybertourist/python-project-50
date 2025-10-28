@@ -1,6 +1,7 @@
 from .parser import parse_file
 from .diff_builder import build_diff
-from .formatters.stylish import format_stylish
+from hexlet_code.formatters.stylish import format_stylish
+from hexlet_code.formatters.plain import format_plain
 
 
 def generate_diff(file_path1, file_path2, format_name='stylish'):
@@ -10,5 +11,7 @@ def generate_diff(file_path1, file_path2, format_name='stylish'):
 
     if format_name == 'stylish':
         return format_stylish(diff)
+    if format_name == 'plain':
+        return format_plain(diff)
 
     raise ValueError(f"Unknown format: {format_name}")
