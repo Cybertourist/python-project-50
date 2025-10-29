@@ -43,4 +43,3 @@ def format_plain(diff, path=''):
             continue
 
     return '\n'.join(lines)
-
