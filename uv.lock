@@ -148,7 +148,6 @@ source = { editable = "." }
 dependencies = [
     { name = "pytest" },
     { name = "pyyaml" },
-    { name = "ruff" },
 ]
 
 [package.dev-dependencies]
@@ -157,13 +156,13 @@ dev = [
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pyyaml" },
+    { name = "ruff" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "pytest", specifier = ">=8.4.2" },
     { name = "pyyaml", specifier = ">=6.0.3" },
-    { name = "ruff", specifier = ">=0.14.1" },
 ]
 
 [package.metadata.requires-dev]
@@ -172,6 +171,7 @@ dev = [
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "ruff", specifier = ">=0.14.1" },
 ]
 
 [[package]]
