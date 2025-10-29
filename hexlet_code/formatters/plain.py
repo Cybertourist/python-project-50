@@ -23,26 +23,24 @@ def format_plain(diff, path=''):
         property_path = f"{path}{key}"
 
         if status == 'nested':
+            # Рекурсивно спускаемся в children
             lines.append(format_plain(node['children'], f"{property_path}."))
         elif status == 'added':
             value = format_value(node['value'])
             lines.append(
-                f"Property '{property_path}' was added with value: "
-                f"{value}"  # Первая часть
+                f"Property '{property_path}' was added with value: {value}"
             )
         elif status == 'removed':
-            lines.append(
-                f"Property '{property_path}' was removed"
-            )
+            lines.append(f"Property '{property_path}' was removed")
         elif status == 'changed':
             old = format_value(node['old_value'])
             new = format_value(node['new_value'])
-
-            # Разделим строку явно на несколько частей
             lines.append(
-                f"Property '{property_path}' was updated. "  # Первая часть
-                f"From {old} "  # Вторая часть
-                f"to {new}"  # Третья часть
+                f"Property '{property_path}' was updated. From {old} to {new}"
             )
+        elif status == 'unchanged':
+            # Пропускаем — в plain-формате не показываем неизменённые
+            continue
 
-    return '\n'.join(filter(None, lines))
+    return '\n'.join(lines)
+
