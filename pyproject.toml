@@ -17,7 +17,7 @@ dependencies = [
 gendiff = "hexlet_code.scripts.gendiff:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["hexlet_code"]
+packages = ["hexlet_code", "gendiff"]
 
 [tool.ruff]
 line-length = 88
