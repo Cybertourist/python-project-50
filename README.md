@@ -1,5 +1,7 @@
 # Hexlet Code – Генератор различий (Gendiff)
 
+
+[![hexlet-check](https://github.com/Cybertourist/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Cybertourist/python-project-50/actions/workflows/hexlet-check.yml)
 [![GitHub Actions](https://github.com/Cybertourist/python-project-50/actions/workflows/ci.yml/badge.svg)](https://github.com/Cybertourist/python-project-50/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Cybertourist_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Cybertourist_python-project-50)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Cybertourist_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Cybertourist_python-project-50)

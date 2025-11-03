@@ -1,5 +1,5 @@
 import json
-from hexlet_code.gendiff import generate_diff
+from gendiff.gendiff import generate_diff
 from tests.utils import get_fixture_path
 
 
