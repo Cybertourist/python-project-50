@@ -11,10 +11,10 @@ def generate_diff(file_path1, file_path2, format_name='stylish'):
     diff = build_diff(data1, data2)
 
     if format_name == 'stylish':
-        return format_stylish(diff)
+        return format_stylish(diff).rstrip() + '\n\n'
     if format_name == 'plain':
-        return format_plain(diff)
+        return format_plain(diff).rstrip() + '\n\n'
     if format_name == 'json':
-        return format_json(diff)
+        return format_json(diff).rstrip() + '\n'
 
     raise ValueError(f"Unknown format: {format_name}")
