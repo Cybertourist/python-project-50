@@ -32,7 +32,7 @@ dist/
 htmlcov/
 .pytest_cache/
 nosetests.xml
-coverage.xml
+# coverage.xml
 *.mochitest.log
 *.out
 *.err
