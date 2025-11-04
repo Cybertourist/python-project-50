@@ -1,9 +1,17 @@
 import os
+<<<<<<< HEAD
+=======
+import difflib
+>>>>>>> 98963a6 (Hope last upd)
 from gendiff import generate_diff
 
 
 def get_fixture_path(filename):
+<<<<<<< HEAD
     return os.path.join(os.path.dirname(__file__), 'test_data', filename)
+=======
+    return os.path.join(os.path.dirname(__file__), 'test_data/fixtures', filename)
+>>>>>>> 98963a6 (Hope last upd)
 
 
 def test_generate_diff_plain():
