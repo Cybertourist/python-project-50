@@ -1,6 +1,6 @@
-import json  #NOSONAR
+import json
 
 
-def format_json(diff):  #NOSONAR
+def format_json(diff):
     """Возвращает diff в формате JSON."""
-    return json.dumps(diff, indent=2)  #NOSONAR
+    return json.dumps(diff, indent=2)
