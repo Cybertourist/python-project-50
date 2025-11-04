@@ -32,7 +32,7 @@ jobs:
         run: make lint
 
       - name: Run tests with coverage
-        run: uv run pytest --cov=hexlet_code --cov-report=xml:coverage.xml
+        run: uv run pytest --cov=gendiff --cov-report=xml:coverage.xml
 
       - name: Run SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
